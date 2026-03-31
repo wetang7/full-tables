@@ -50,9 +50,9 @@
 | LSTM Tuning | 83.67 | 84.16 | 85.33 | 86.01 | 86.93 |
 | Ours | 87.38 | 89.15 | 89.50 | 90.85 | 91.23 |
 
-| Guidance | 10s | 30s | 60s | 120s | 180s |
+| Guidance | VTaC-10s | VTaC-30s | VTaC-60s | VTaC-120s | VTaC-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Self-guided      | 61.23 | 76.03 | 80.27 | 83.68 | 82.60 |
+| MERL Self-guided | 61.23 | 76.03 | 80.27 | 83.68 | 82.60 |
 | CSFM-Tiny guided | 62.67 | 79.64 | 83.46 | 84.64 | 85.19 |
 | CSFM-Base guided | 63.16 | 81.33 | 84.51 | 84.99 | 86.07 |
 
@@ -86,7 +86,7 @@ CPSC:
 | Intra-subject Contrast | 58.96 | 67.88 | 69.46 | 71.12 | 71.93 |
 | Inter-subject Contrast | 59.93 | 66.48 | 70.49 | 71.57 | 72.04 |
 
-| Parameters | Full Fine-tuning | Ours |
+| Training Parameters | Full Fine-tuning | Ours |
 | --- | ---: | ---: |
 | CSFM-Tiny | 91,270,969 | 3,891,201 |
 | MERL | 5,473,152 | 3,891,201 |
@@ -125,9 +125,9 @@ CPSC:
 |  | **VTaC-10s** | **VTaC-30s** | **VTaC-60s** | **VTaC-120s** | **VTaC-180s** |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | ResNet-50 (train from scratch using 3 min raw) | 78.44 | 84.78 | 87.15 | 87.34 | 86.39 | 
-| ResNet-50 (train using 10-s FM feature sequence)  | 54.01 | 68.20 | 64.16 | 60.87 | 73.67 |
+| ResNet-50 (train using 10-s CSFM feature sequence)  | 54.01 | 68.20 | 64.16 | 60.87 | 73.67 |
 | 3 layer LSTM (train from scratch using 3 min raw) | 83.18 | 87.25 | 88.02 | 87.00 | 86.88 |
-| 3 layer LSTM (train using 10-s FM feature sequence) | 67.97 | 72.42 | 74.30 | 73.54 | 72.73 |
+| 3 layer LSTM (train using 10-s CSFM feature sequence) | 67.97 | 72.42 | 74.30 | 73.54 | 72.73 |
 
 | CSFM-Base | VTaC-10s | VTaC-30s | VTaC-60s | VTaC-120s | VTaC-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -150,17 +150,17 @@ CPSC:
 | Ours | 84.10 | 88.29 | 89.01 | 89.76 | 89.50 |
 
 VTaC:
-| fg bg pair l2 mean | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
+| fg-bg feature pair l2 distance mean | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
 | --- | ---: | ---: | ---: | ---: |
 |  | 0.4506 | 0.2585 | 0.1607 | 0.1408 |
 
 MCMED:
-| fg bg pair l2 mean | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
+| fg-bg feature pair l2 distance mean | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
 | --- | ---: | ---: | ---: | ---: |
 |  | 0.3797 | 0.2038 | 0.1372 | 0.1236 |
 
 CPSC:
-| fg bg pair l2 mean | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
+| fg-bg feature pair l2 distance mean | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
 | --- | ---: | ---: | ---: | ---: |
 |  | 0.3568 | 0.1970 | 0.1383 | 0.1267 |
 
