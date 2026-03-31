@@ -1,3 +1,5 @@
+Table 1: Performance comparison of different fine-tuning methods on VTaC dataset for ECG_JEPA model. Results show AUC (%) across five different signal length.
+
 | ECG_JEPA | VTaC-10s | VTaC-30s | VTaC-60s | VTaC-120s | VTaC-180s | 
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Logit Pooling | 80.30 | 79.14 | 77.95 | 76.90	| 76.23	| 	
@@ -10,6 +12,8 @@
 | VPT | 70.66	| 78.44	| 84.53	| 88.73	| 89.87	| 
 | LSTM Tuning | 79.67 | 80.26	| 82.82	| 85.41	| 85.17	|			
 | Ours | 78.86 | 82.93 | 86.09 | 89.36 | 91.02 |
+
+Table 2: Performance comparison of different fine-tuning methods on MCMED dataset (ED discharge) for ECG_JEPA model. Results show AUC (%) across five different signal length.
 
 | ECG_JEPA | MC-MED-10s | MC-MED-30s | MC-MED-60s | MC-MED-120s | MC-MED-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -24,6 +28,8 @@
 | LSTM Tuning | 63.01	| 68.27	| 69.69	| 70.27	| 70.72	|
 | Ours | 66.32 | 67.96 | 72.77 | 73.96 | 72.48 |
 
+Table 3: Performance comparison of different fine-tuning methods on CPSC2021 dataset for ECG_JEPA model. Results show AUC (%) across five different signal length.
+
 | ECG_JEPA | CPSC2021-10s | CPSC2021-30s | CPSC2021-60s | CPSC2021-120s | CPSC2021-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Logit Pooling | 90.00	| 90.51	| 91.44	| 90.27	| 90.14	|			
@@ -36,6 +42,8 @@
 | VPT | 70.32	| 78.37	| 89.16	| 92.77	| 93.65	|			
 | LSTM Tuning | 90.14	| 90.79	| 90.91	| 91.49	| 91.26	|			
 | Ours | 84.08 | 87.00 | 92.97 | 94.25 | 94.65 |
+
+Table 4: Performance comparison of different fine-tuning methods on VTaC dataset for CSFM-Base model. Results show AUC (%) across five different signal length.
 
 | CSFM-Base | VTaC-10s | VTaC-30s | VTaC-60s | VTaC-120s | VTaC-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -50,11 +58,15 @@
 | LSTM Tuning | 83.67 | 84.16 | 85.33 | 86.01 | 86.93 |
 | Ours | 87.38 | 89.15 | 89.50 | 90.85 | 91.23 |
 
+Table 5: Effect of different guidance source for MERL on the VTaC dataset.
+
 | Guidance | VTaC-10s | VTaC-30s | VTaC-60s | VTaC-120s | VTaC-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | MERL Self-guided | 61.23 | 76.03 | 80.27 | 83.68 | 82.60 |
 | CSFM-Tiny guided | 62.67 | 79.64 | 83.46 | 84.64 | 85.19 |
 | CSFM-Base guided | 63.16 | 81.33 | 84.51 | 84.99 | 86.07 |
+
+Table 6: Performance evaluation of various foreground (fg) and background (bg) sampling strategies across the VTaC, MCMED, and CPSC datasets with varying foreground ratios. All experiments were conducted using 3-minute ECG sequences for both training and testing. Features derived from the bg-only, fg-only, and fg+bg strategies were averaged to train a linear classification head.
 
 VTaC:
 
@@ -80,11 +92,15 @@ CPSC:
 | fg-only | 96.58 | 96.25 | 96.66 | 96.53 |
 |  fg+bg  | 96.81 | 96.81 | 96.81 | 96.81 |
 
+Table 7: Comparison of different contrastive learning strategies for CSFM-Tiny model in MCMED dataset. We evaluate three contrastive approaches: Batch Contrast (standard batch-level contrastive learning), Intra-subject Contrast (contrasting samples within the same subject), and Inter-subject Contrast (contrasting samples across different subjects).
+
 | **CSFM-Tiny** | **10s** | **30s** | **60s** | **120s** | **180s** |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Batch Contrast         | 64.38 | 69.55 | 71.12 | 71.88 | 72.02 |
 | Intra-subject Contrast | 58.96 | 67.88 | 69.46 | 71.12 | 71.93 |
 | Inter-subject Contrast | 59.93 | 66.48 | 70.49 | 71.57 | 72.04 |
+
+Table 8: Comparison of the number of trainable parameters between full fine-tuning and the proposed method across different model architectures.
 
 | Training Parameters | Full Fine-tuning | Ours |
 | --- | ---: | ---: |
@@ -93,8 +109,9 @@ CPSC:
 | CSFM-Base | 157,389,625 | 4,352,001 |
 | ECG-JEPA | 85,374,720 | 3,891,201 |
 
+Table 9: Comparison of drop strategies for the consistency module, evaluated on CSFM-Tiny model.
 
-| **Training Data** | **Drop Method** | **VTaC-10s** | **VTaC-30s** | **VTaC-60s** | **VTaC-120s** | **VTaC-180s** |
+| **Training Data Ratio** | **Drop Method** | **VTaC-10s** | **VTaC-30s** | **VTaC-60s** | **VTaC-120s** | **VTaC-180s** |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | **10%** | Affinity Drop | 69.15 | 68.92 | 69.31 | 70.97 | 71.18 |
 |  | Random Drop | 67.89 | 68.27 | 68.64 | 71.04 | 70.49 |
@@ -105,6 +122,7 @@ CPSC:
 | **100%** | Affinity Drop | 84.10 | 88.29 | 89.01 | 89.76 | 89.50 |
 |  | Random Drop | 84.00 | 87.19 | 88.35 | 90.03 | 89.01 |
 
+Table 10: Performance comparison of different fine-tuning methods on MCMED dataset (ED triage) for CSFM-Tiny model. Results show AUC (%) across five different signal length.
 
 | CSFM-Tiny | ED triage-10s | ED triage-30s | ED triage-60s | ED triage-120s | ED triage-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -119,6 +137,8 @@ CPSC:
 | LSTM Tuning | 51.08 | 58.29 | 61.66 | 60.98 | 61.97|
 | Ours | 60.17 | 62.54 | 64.14 | 64.74 | 65.18 | 
 
+Table 11: Comparison of temporal modeling approaches on VTaC dataset with varying sequence lengths. We compare ResNet-50 and 3-layer LSTM models trained in two settings: (1) from scratch using 3-minute raw ECG signals, and (2) using concatenated 10-second CSFM feature sequences.
+
 |  | **VTaC-10s** | **VTaC-30s** | **VTaC-60s** | **VTaC-120s** | **VTaC-180s** |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | ResNet-50 (train from scratch using 3 min raw) | 78.44 | 84.78 | 87.15 | 87.34 | 86.39 | 
@@ -126,18 +146,7 @@ CPSC:
 | 3 layer LSTM (train from scratch using 3 min raw) | 83.18 | 87.25 | 88.02 | 87.00 | 86.88 |
 | 3 layer LSTM (train using 10-s CSFM feature sequence) | 67.97 | 72.42 | 74.30 | 73.54 | 72.73 |
 
-| CSFM-Base | VTaC-10s | VTaC-30s | VTaC-60s | VTaC-120s | VTaC-180s |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Logit Pooling | 82.75 | 79.95 | 79.64 | 78.01| 77.83 |
-| Token Pooling | 83.19 | 80.23 | 79.56 | 78.26 | 77.94 |
-| Full Fine-tuning | 62.81 | 64.03 | 70.89 | 80.33	| 84.23 |
-| Linear Probing | 79.61 | 80.68 | 78.00 | 74.87 | 74.35	|
-| Partial Tuning | 69.39 | 73.38 | 80.83 | 86.05 | 88.81 |			
-| Bias Tuning | 65.83	| 72.93	| 83.89	| 89.93	| 90.55	| 			
-| Adapter | 69.84	| 72.79	| 78.27	| 85.42 | 88.43 | 		
-| VPT | 70.60	| 75.02	| 82.11	| 85.65	| 90.24	|		
-| LSTM Tuning | 83.67 | 84.16 | 85.33 | 86.01 | 86.93 |
-| Ours | 87.38 | 89.15 | 89.50 | 90.85 | 91.23 |
+Table 12: Comparison of different feature aggregation methods for CSFM-Tiny model on VTaC dataset. We evaluate four approaches: Token Pooling (averaging window features), Logit Pooling (averaging prediction logits), Multi-instance Learning (attention-weighted pooling), and our proposed method.
 
 | **CSFM-Tiny** | **VTaC-10s** | **VTaC-30s** | **VTaC-60s** | **VTaC-120s** | **VTaC-180s** |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -145,6 +154,8 @@ CPSC:
 | Logit Pooling  | 78.23 | 77.45 | 75.51 | 74.14 | 73.83 |
 | Multi-instance Learning | 80.01 | 80.31 | 79.56 | 77.37 | 77.40 |
 | Ours | 84.10 | 88.29 | 89.01 | 89.76 | 89.50 |
+
+Table 13: Mean L2 distance between foreground and background feature pairs across different datasets and foreground ratios. For each record, we compute the L2 distance between the averaged foreground (fg) features and averaged background (bg) features, then report the mean across all records.
 
 VTaC:
 | fg-bg feature pair l2 distance mean | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
@@ -161,10 +172,14 @@ CPSC:
 | --- | ---: | ---: | ---: | ---: |
 |  | 0.3568 | 0.1970 | 0.1383 | 0.1267 |
 
+Table 14: Performance of fine-tuning CSFM_Tiny model using 5-minutes signals from VTaC dataset. Results show AUC (%) across five different signal length.
+
 | **CSFM-Tiny** | **VTaC-1 mins** | **VTaC-2 mins** | **VTaC-3 mins** | **VTaC-4 mins** | **VTaC-5 mins** |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Full Fine-tuning  | 66.71 | 66.86 | 73.00 | 75.78 | 78.07 |
-|       Ours      | 85.55 | 86.24 | 85.97 | 86.09 | 85.45 | (note: decreased batch size)
+|       Ours      | 85.55 | 86.24 | 85.97 | 86.09 | 85.45 |
+
+Table 15: Performance of fine-tuning CSFM_Tiny model under different foreground ratio. Results show AUC (%) across five different signal length.
 
 | **CSFM-Tiny** | **VTaC-10s** | **VTaC-30s** | **VTaC-60s** | **VTaC-120s** | **VTaC-180s** |
 | --- | ---: | ---: | ---: | ---: | ---: |
