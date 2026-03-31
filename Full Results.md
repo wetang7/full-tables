@@ -98,7 +98,7 @@ CPSC:
 
 |  | **VTaC-10s** | **VTaC-30s** | **VTaC-60s** | **VTaC-120s** | **VTaC-180s** |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| ResNet-50 (train from scratch using 3 min raw) | 78.44 | 84.78 ｜ 87.15 ｜ 87.34 ｜ 86.39 ｜
+| ResNet-50 (train from scratch using 3 min raw) | 78.44 | 84.78 | 87.15 | 87.34 | 86.39 | 
 | ResNet-50 (train using 10-s FM feature sequence)  | 54.01 | 68.20 | 64.16 | 60.87 | 73.67 |
 | 3 layer LSTM (train from scratch using 3 min raw) | 83.18 | 87.25 | 88.02 | 87.00 | 86.88 |
 | 3 layer LSTM (train using 10-s FM feature sequence) | 67.97 | 72.42 | 74.30 | 73.54 | 72.73 |
