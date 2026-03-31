@@ -1,5 +1,7 @@
 <details>
-<summary>Results on more ECG foundation models</summary>
+<summary>Results on more ECG foundation models. </summary>
+
+Table 1: Performance comparison of different fine-tuning methods on VTaC dataset for ECG_JEPA model. Results show AUC (%) across five different signal length.
 
 | ECG_JEPA | VTaC-10s | VTaC-30s | VTaC-60s | VTaC-120s | VTaC-180s | 
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -14,6 +16,8 @@
 | LSTM Tuning | 79.67 | 80.26	| 82.82	| 85.41	| 85.17	|			
 | Ours | 78.86 | 82.93 | 86.09 | 89.36 | 91.02 |
 
+Table 2: Performance comparison of different fine-tuning methods on MCMED dataset (ED discharge) for ECG_JEPA model. Results show AUC (%) across five different signal length.
+
 | ECG_JEPA | MC-MED-10s | MC-MED-30s | MC-MED-60s | MC-MED-120s | MC-MED-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Logit Pooling | 63.52	| 67.33 |	68.95 |	69.32	| 69.23	| 	
@@ -27,6 +31,7 @@
 | LSTM Tuning | 63.01	| 68.27	| 69.69	| 70.27	| 70.72	|
 | Ours | 66.32 | 67.96 | 72.77 | 73.96 | 72.48 |
 
+Table 3: Performance comparison of different fine-tuning methods on CPSC2021 dataset for ECG_JEPA model. Results show AUC (%) across five different signal length.
 
 | ECG_JEPA | CPSC2021-10s | CPSC2021-30s | CPSC2021-60s | CPSC2021-120s | CPSC2021-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -41,6 +46,7 @@
 | LSTM Tuning | 90.14	| 90.79	| 90.91	| 91.49	| 91.26	|			
 | Ours | 84.08 | 87.00 | 92.97 | 94.25 | 94.65 |
 
+Table 4: Performance comparison of different fine-tuning methods on VTaC dataset for CSFM-Base model. Results show AUC (%) across five different signal length.
 
 | CSFM-Base | VTaC-10s | VTaC-30s | VTaC-60s | VTaC-120s | VTaC-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -61,6 +67,8 @@
 <details>
 <summary>Results on the comparison of different FM guidance to MERL</summary>
 
+Table 5: Effect of different guidance source for MERL on the VTaC dataset.
+
 | Guidance | VTaC-10s | VTaC-30s | VTaC-60s | VTaC-120s | VTaC-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | MERL Self-guided | 61.23 | 76.03 | 80.27 | 83.68 | 82.60 |
@@ -71,27 +79,23 @@
 </details>
 
 <details>
-<summary>Results on the predictive performance against different raitos of "foreground" and "background"</summary>
+<summary>Results on the predictive performance against different background ratios of "foreground" and "background"</summary>
 
-VTaC:
+Table 6: Performance evaluation of various foreground (fg) and background (bg) sampling strategies across the VTaC, MCMED, and CPSC datasets with varying foreground ratios. All experiments were conducted using 3-minute ECG sequences for both training and testing. Features derived from the bg-only, fg-only, and fg+bg strategies were averaged to train a linear classification head.
 
-| 3min train & test | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
-| --- | ---: | ---: | ---: | ---: |
-| bg-only | 67.93 | 67.25 | 66.58 | 63.37 |
-| fg-only | 71.98 | 71.73 | 72.03 | 72.49 |
-|  fg+bg  | 74.05	| 74.05	| 74.05	| 74.05	|
+| VTaC | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
+|------------------------| ---: | ---: | ---: | ---: |
+| bg-only                | 67.93 | 67.25 | 66.58 | 63.37 |
+| fg-only                | 71.98 | 71.73 | 72.03 | 72.49 |
+| fg+bg                  | 74.05	| 74.05	| 74.05	| 74.05	|
 
-MCMED:
-
-| 3min train & test | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
+| MCMED | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
 | --- | ---: | ---: | ---: | ---: |
 | bg-only | 69.06 | 68.93 | 68.99 | 67.28 |
 | fg-only | 68.44 | 69.39 | 69.85 | 70.02 |
-|  fg+bg  | 70.80 | 70.80 | 70.80 | 70.80 |
+|  fg+bg | 70.80 | 70.80 | 70.80 | 70.80 |
 
-CPSC:
-
-| 3min train & test | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
+| CPSC | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
 | --- | ---: | ---: | ---: | ---: |
 | bg-only | 96.38 | 94.53 | 90.15 | 87.06 |
 | fg-only | 96.58 | 96.25 | 96.66 | 96.53 |
@@ -101,28 +105,27 @@ CPSC:
 
 <details>
 <summary>Results of embedding space differences between "background" and "foreground", under different ratios. </summary>
-VTaC:
 
-| fg-bg feature pair l2 distance mean | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
-| --- | ---: | ---: | ---: | ---: |
-|  | 0.4506 | 0.2585 | 0.1607 | 0.1408 |
+Table 13: Mean L2 distance between foreground and background feature pairs across different datasets and foreground ratios. For each record, we compute the L2 distance between the averaged foreground (fg) features and averaged background (bg) features, then report the mean across all records.
 
-MCMED:
+| VTaC | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
+|------| ---: | ---: | ---: | ---: |
+|      | 0.4506 | 0.2585 | 0.1607 | 0.1408 |
 
-| fg-bg feature pair l2 distance mean | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
-| --- | ---: | ---: | ---: | ---: |
-|  | 0.3797 | 0.2038 | 0.1372 | 0.1236 |
+| MC-MED | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
+|--------| ---: | ---: | ---: | ---: |
+|        | 0.3797 | 0.2038 | 0.1372 | 0.1236 |
 
-CPSC:
-
-| fg-bg feature pair l2 distance mean | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
-| --- | ---: | ---: | ---: | ---: |
-|  | 0.3568 | 0.1970 | 0.1383 | 0.1267 |
+| CPSC | 10% as fg | 25% as fg | 50% as fg | 75% as fg |
+|------| ---: | ---: | ---: | ---: |
+|      | 0.3568 | 0.1970 | 0.1383 | 0.1267 |
 
 </details>
 
 <details>
 <summary>Results of extended model performance with different ratios, on VTaC, based on CSFM-Tiny</summary>
+
+Table 7: Performance of fine-tuning CSFM_Tiny model under different foreground ratio. Results show AUC (%) across five different signal length.
 
 | **CSFM-Tiny** | **VTaC-10s** | **VTaC-30s** | **VTaC-60s** | **VTaC-120s** | **VTaC-180s** |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -136,6 +139,8 @@ CPSC:
 <details>
 <summary>Results of different locality-aware contrastive strategies on MC-MED (ED discharge)</summary>
 
+Table 8: Comparison of different contrastive learning strategies for CSFM-Tiny model in MCMED dataset. We evaluate three contrastive approaches: Batch Contrast (standard batch-level contrastive learning), Intra-subject Contrast (contrasting samples within the same subject), and Inter-subject Contrast (contrasting samples across different subjects).
+
 | **CSFM-Tiny** | **10s** | **30s** | **60s** | **120s** | **180s** |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Batch Contrast         | 64.38 | 69.55 | 71.12 | 71.88 | 72.02 |
@@ -147,6 +152,8 @@ CPSC:
 
 <details>
 <summary>Comparison of computational cost between full-finetuning and ours, across different backbone foundation models</summary>
+
+Table 9: Comparison of the number of trainable parameters between full fine-tuning and the proposed method across different model architectures.
 
 | Training Parameters | Full Fine-tuning | Ours |
 | --- | ---: | ---: |
@@ -160,6 +167,8 @@ CPSC:
 
 <details>
 <summary>Results of additional tasks on MC-MED (5 class Triage_Acuity, based on CSFM-Tiny)</summary>
+
+Table 10: Performance comparison of different fine-tuning methods on MC-MED dataset (ED triage) for CSFM-Tiny model. Results show AUC (%) across five different signal length.
 
 | CSFM-Tiny | ED triage-10s | ED triage-30s | ED triage-60s | ED triage-120s | ED triage-180s |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -179,6 +188,8 @@ CPSC:
 <details>
 <summary>Results of different drop strategies (Affinity drop vs Random drop) </summary>
 
+Table 11: Comparison of drop strategies for the consistency module, evaluated on CSFM-Tiny model.
+
 | **Training Data** | **Drop Method** | **VTaC-10s** | **VTaC-30s** | **VTaC-60s** | **VTaC-120s** | **VTaC-180s** |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | **50%** | Affinity Drop | 80.39 | 83.79 | 86.02 | 86.10 | 86.25 |
@@ -190,17 +201,21 @@ CPSC:
 <details>
 <summary>Results of additional baseline comparisons on VTaC based on CSFM-Tiny</summary>
 
-| **CSFM-Tiny**                                         | **VTaC-10s** | **VTaC-30s** | **VTaC-60s** | **VTaC-120s** | **VTaC-180s** |
-|-------------------------------------------------------| ---: | ---: | ---: | ---: | ---: |
-| ResNet1d-50 (train using 10-s CSFM feature sequence)  | 54.01 | 68.20 | 64.16 | 60.87 | 73.67 |
-| 3 layer LSTM (train using 10-s CSFM feature sequence) | 67.97 | 72.42 | 74.30 | 73.54 | 72.73 |
-| Multi-instance Learning                               | 80.01 | 80.31 | 79.56 | 77.37 | 77.40 |
-| Ours                                                  | 84.10 | 88.29 | 89.01 | 89.76 | 89.50 |
+Table 12: Comparison of temporal modeling approaches on VTaC dataset with varying sequence lengths. We compare ResNet1D, 3-layer LSTM models, and MIL methods.
+
+| **CSFM-Tiny**                                             | **VTaC-10s** | **VTaC-30s** | **VTaC-60s** | **VTaC-120s** | **VTaC-180s** |
+|-----------------------------------------------------------| ---: | ---: | ---: | ---: | ---: |
+| ResNet1d-50 (train using 10s CSFM-Tiny feature sequence)  | 54.01 | 68.20 | 64.16 | 60.87 | 73.67 |
+| 3-layer LSTM (train using 10s CSFM-Tiny feature sequence) | 67.97 | 72.42 | 74.30 | 73.54 | 72.73 |
+| Multi-instance Learning                                   | 80.01 | 80.31 | 79.56 | 77.37 | 77.40 |
+| Ours                                                      | 84.10 | 88.29 | 89.01 | 89.76 | 89.50 |
 
 </details>
 
 <details>
 <summary>Results of setting upper bound as 5 minutes, on VTaC (note: decreased batch size)</summary>
+
+Table 13: Performance of fine-tuning CSFM_Tiny model under different foreground ratio. Results show AUC (%) across five different signal length.
 
 | **CSFM-Tiny** | **VTaC-1 mins** | **VTaC-2 mins** | **VTaC-3 mins** | **VTaC-4 mins** | **VTaC-5 mins** |
 | --- | ---: | ---: | ---: | ---: | ---: |
